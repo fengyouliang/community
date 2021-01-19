@@ -19,4 +19,7 @@ public interface DiscussPostMapper {
     // 获取总共有多少个帖子，userId 动态sql
     int selectDiscussPostRows(@Param("userId") int userId);
     // Param 用于参数别名，但只有一个参数时，并且在<if>里面使用，必须添加这个注解
+
+    int insertDiscussPost(DiscussPost discussPost);
+
 }

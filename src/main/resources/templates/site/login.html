@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <link href="https://static.nowcoder.com/images/logo_87_87.png" rel="icon"/>
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          rel="stylesheet">
+    <!--<link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">-->
+    <link crossorigin="anonymous" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/global.css}"/>
     <link rel="stylesheet" th:href="@{/css/login.css}"/>
     <title>牛客网-登录</title>
@@ -75,7 +75,6 @@
                         <input id="username" name="username"
                                placeholder="请输入您的账号!"
                                required th:class="|form-control ${usernameMsg!=null?'is-invalid':''}|" th:value="${param.username}" type="text">
-                        <!--param.username 等于从request中取值-->
                         <div class="invalid-feedback" th:text="${usernameMsg}">
                             该账号不存在!
                         </div>
@@ -189,10 +188,14 @@
         </div>
     </footer>
 </div>
-<script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!--<script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
 <script crossorigin="anonymous"
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script crossorigin="anonymous" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--<script crossorigin="anonymous" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+
+<script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 <script th:src="@{/js/global.js}"></script>
 <script>
     function refresh_kaptcha() {
