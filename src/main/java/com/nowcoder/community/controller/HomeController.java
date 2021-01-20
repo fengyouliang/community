@@ -57,4 +57,10 @@ public class HomeController {
         return "/index";  //TODO: return "index"; also work, don`t know why?
 
     }
+
+    @RequestMapping(path = "/error", method = RequestMethod.GET)
+    public String getErrorPage() {
+        return "/error/500";
+    }
+
 }

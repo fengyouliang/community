@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <link href="https://static.nowcoder.com/images/logo_87_87.png" rel="icon"/>
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    <link crossorigin="anonymous" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
           rel="stylesheet">
-    <link href="../../css/global.css" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/global.css}"/>
     <title>牛客网-500</title>
 </head>
 <body>
 <div class="nk-container">
     <!-- 头部 -->
-    <header class="bg-dark sticky-top">
+    <header class="bg-dark sticky-top" th:replace="index::header">
         <div class="container">
             <!-- 导航 -->
             <nav class="navbar navbar-expand-lg navbar-dark">
@@ -67,7 +67,7 @@
     <!-- 内容 -->
     <div class="main">
         <div class="container pl-5 pr-5 pt-3 pb-3 mt-3 mb-3">
-            <img src="../../img/error.png">
+            <img th:src="@{/img/error.png}">
         </div>
     </div>
 
@@ -135,10 +135,14 @@
         </div>
     </footer>
 </div>
-<script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!--<script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
 <script crossorigin="anonymous"
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script crossorigin="anonymous" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="../../js/global.js"></script>
+<!--<script crossorigin="anonymous" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
+
+<script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script crossorigin="anonymous" src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script th:src="@{/js/global.js}"></script>
 </body>
 </html>
