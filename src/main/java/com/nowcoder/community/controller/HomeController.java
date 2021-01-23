@@ -4,13 +4,14 @@ import com.nowcoder.community.entity.DiscussPost;
 import com.nowcoder.community.entity.Page;
 import com.nowcoder.community.entity.User;
 import com.nowcoder.community.service.DiscussPostService;
+import com.nowcoder.community.service.LikeService;
 import com.nowcoder.community.service.UserService;
+import com.nowcoder.community.util.CommunityConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,13 +19,16 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class HomeController {
+public class HomeController implements CommunityConstant {
 
     @Autowired
     private DiscussPostService discussPostService;
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private LikeService likeService;
 
     @RequestMapping(path = "/index", method = RequestMethod.GET)
     public String getIndexPage(Model model, Page page) {
@@ -34,28 +38,22 @@ public class HomeController {
         page.setPath("/index");
 
         List<DiscussPost> list = discussPostService.findDiscussPosts(0, page.getOffset(), page.getLimit());
-        // 拿到前limit条数据用于首页展示
-        // 但由于discuss post 表中只有user id 而 首页展示需要user name
-        // 下面操作将user id 准换为user name
-
         List<Map<String, Object>> discussPosts = new ArrayList<>();
-
         if (list != null) {
-            for (DiscussPost discussPost : list) {
+            for (DiscussPost post : list) {
                 Map<String, Object> map = new HashMap<>();
-                // 将discuss post 和 user 查询的结果保存到map里面，用于templates中的html展示
-                map.put("post", discussPost);
-                User user = userService.findUserById(discussPost.getUserId());
+                map.put("post", post);
+                User user = userService.findUserById(post.getUserId());
                 map.put("user", user);
+
+                long likeCount = likeService.findEntityLikeCount(ENTITY_TYPE_POST, post.getId());
+                map.put("likeCount", likeCount);
 
                 discussPosts.add(map);
             }
         }
         model.addAttribute("discussPosts", discussPosts);
-        // 将discussPosts传入model并命名为discussPosts，用于index.html中使用thymeleaf访问数据
-
-        return "/index";  //TODO: return "index"; also work, don`t know why?
-
+        return "/index";
     }
 
     @RequestMapping(path = "/error", method = RequestMethod.GET)
