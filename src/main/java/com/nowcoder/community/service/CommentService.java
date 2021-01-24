@@ -14,7 +14,7 @@ import org.springframework.web.util.HtmlUtils;
 import java.util.List;
 
 @Service
-public class CommentService {
+public class CommentService implements CommunityConstant {
 
     @Autowired
     private CommentMapper commentMapper;
@@ -45,12 +45,16 @@ public class CommentService {
         int rows = commentMapper.insertComment(comment);
 
         // 更新帖子评论数量
-        if (comment.getEntityType() == CommunityConstant.ENTITY_TYPE_POST) {
+        if (comment.getEntityType() == ENTITY_TYPE_POST) {
             int count = commentMapper.selectCountByEntity(comment.getEntityType(), comment.getEntityId());
             discussPostService.updateCommentCount(comment.getEntityId(), count);
         }
 
         return rows;
+    }
+
+    public Comment findCommentById(int id) {
+        return commentMapper.selectCommentById(id);
     }
 
 }
