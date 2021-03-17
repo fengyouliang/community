@@ -4,7 +4,7 @@
 * 计算机类电子书仓库：https://github.com/cosen1024/awesome-cs-books
 * Java面试题仓库：https://github.com/cosen1024/Java-Interview
 ## 项目演示
-演示地址: http://coolsen.cn/ <br>
+演示地址: http://47.99.167.178:8081/community/index <br>
 账号密码: aaa/aaa
 ## 技术选型
 ![](.images/arc.png)
@@ -36,6 +36,3 @@
 ## 后续更新点
 * 增加收藏功能
 * 增强对话框功能
-## 相关资源
-[相关的教程](https://pan.baidu.com/s/1LjYYwJVsqNBxq69udsXMvA):网盘提取码：wxdd 
-
